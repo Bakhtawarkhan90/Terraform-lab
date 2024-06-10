@@ -8,5 +8,5 @@ The terraform-lab repository is designed for educational purposes, providing a h
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/terraform-lab.git
+   git clone https://github.com/Bakhtawarkhan90/terraform-lab.git
    cd terraform-lab
