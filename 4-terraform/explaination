@@ -1,0 +1,43 @@
+# count will create replicas/deuplicate of resources below 2 replicas will be created
+count =2
+# This is used to iterrate value
+for_each  
+
+provider "aws" {
+ region = "us-east-1"
+
+}
+ resource "aws_instance" "ec2" {
+  count = 2
+  ami = "ami-04b70fa74e45c3917"
+  instance_type = "t2.micro"
+  tags = {
+   Name = "TERRA ${count.index}" # This will give instance name like Terra0 ,Terra1 #
+  }
+}
+
+locals {
+ ec2_names = toset (["A","B"])
+}
+
+ resource "aws_instance" "ec2" {
+  for_each = local.ec2_names
+  ami = "ami-04b70fa74e45c3917"
+  instance_type = "t2.micro"
+  tags = {
+   Name = each.key
+ }
+}
+
+locals {
+ ec2_names = toset (["A":"ami-04b70fa74e45c3917","B":"ami-04b70fa74e45c3917"])
+}
+
+ resource "aws_instance" "ec2" {
+  for_each = local.ec2_names
+  ami = each.value
+  instance_type = "t2.micro"
+  tags = {
+   Name = each.key
+ }
+}
