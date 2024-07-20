@@ -12,7 +12,7 @@ resource "aws_key_pair" "key" {
 }
 
 resource "aws_security_group" "sg" {
-   name = "Auto"
+   name = "Terraform"
    description = "Allow ssh inbound traffic"
 
  # using default VPC
@@ -36,7 +36,7 @@ resource "aws_security_group" "sg" {
  }
  
   tags = {
-    Name = "AUTOMATION"
+    Name = "Terraform"
   }
 
 }
@@ -48,8 +48,8 @@ resource "aws_instance" "ec2" {
   key_name = aws_key_pair.key.key_name
   security_groups = [aws_security_group.sg.name]
   tags = {
-  Name = "Automation"
-  volumes = "Automation" 
+  Name = "Terraform"
+  volumes = "Terraform" 
   }
  
 }
