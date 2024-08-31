@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# INSTALLING TERRAFORM
+# INSTALLING TERRAFORM v1.9.5
 
 # Ensure that your system is up to date
-sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common unzip
 
 # Download HashiCorp GPG key
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
@@ -17,8 +17,20 @@ echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://
 # Update package lists
 sudo apt update
 
-# Install Terraform
-sudo apt-get install terraform
+# Remove any existing Terraform binary
+sudo rm -f /usr/local/bin/terraform
+
+# Download Terraform v1.9.5
+wget https://releases.hashicorp.com/terraform/1.9.5/terraform_1.9.5_linux_amd64.zip
+
+# Unzip the downloaded file
+unzip terraform_1.9.5_linux_amd64.zip
+
+# Move the Terraform binary to /usr/local/bin
+sudo mv terraform /usr/local/bin/
+
+# Clean up the downloaded zip file
+rm terraform_1.9.5_linux_amd64.zip
 
 # Display Terraform version
 echo "*******************************************************************************************************"
@@ -27,5 +39,5 @@ echo "**************************************************************************
 
 # Installation message
 echo "*******************************************************************************************************"
-echo "Terraform has installed sucessfully"
+echo " $(terraform --version) has been installed successfully"
 echo "*******************************************************************************************************"
