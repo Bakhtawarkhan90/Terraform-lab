@@ -4,7 +4,9 @@
 ## Purpose
 The terraform-lab repository is designed for educational purposes, providing a hands-on environment to practice and understand various concepts and features of Terraform. Whether you are a beginner or looking to enhance your skills, this repository offers a structured way to explore and master Terraform.
 
-## Getting Started
+## Getting Started 
+## prerequisite
+   Install AWS-CLI 
 
 1. **Clone the Repository**:
    ```bash
